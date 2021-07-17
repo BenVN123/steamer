@@ -1,5 +1,3 @@
-import json
-import socket
 import argparse
 import requests
 from bs4 import BeautifulSoup
