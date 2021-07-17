@@ -2,7 +2,7 @@ import argparse
 import requests
 from bs4 import BeautifulSoup
 
-VERSION = "1.0.0"
+VERSION = "0.0.0"
 
 
 parser = argparse.ArgumentParser(
@@ -96,7 +96,11 @@ def make_search_urls():
 
 def query(link, num):
 	global games, results_left
-	source = requests.get(link).text
+	try:
+		source = requests.get(link).text
+	except requests.exceptions.ConnectionError:
+		print("Failed to connect to Steam. Please check your network.")
+		exit()
 	dem_games = BeautifulSoup(source, "lxml").find(
 		"div", attrs={"id": "search_resultsRows"}
 	).find_all("a")
