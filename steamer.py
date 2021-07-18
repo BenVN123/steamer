@@ -2,7 +2,7 @@ import argparse
 import requests
 from bs4 import BeautifulSoup
 
-VERSION = "0.0.0"
+VERSION = "1.0.0"
 
 
 parser = argparse.ArgumentParser(
