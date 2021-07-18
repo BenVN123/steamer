@@ -63,14 +63,11 @@ if timeout < 0:
 	exit()
 
 
-games = []
 searches_url = []
 main_url = (
 	"https://store.steampowered.com/search/"
 	f"?maxprice={price}&specials={1 if sale > 0 else 0}&term="
 )
-
-print(main_url)
 
 
 def banner():
@@ -95,7 +92,7 @@ def make_search_urls():
 
 
 def query(link, num):
-	global games, results_left
+	global results_left
 	try:
 		source = requests.get(link).text
 	except requests.exceptions.ConnectionError:
@@ -155,7 +152,6 @@ def query(link, num):
 			dem_games.pop(0)
 			continue
 
-		games.append(da_game)
 		dem_games.pop(0)
 		print("[+]", da_game)
 
